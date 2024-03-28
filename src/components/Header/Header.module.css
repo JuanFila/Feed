@@ -9,3 +9,7 @@
 .Header img {
   height: 2rem;
 }
+
+.Header strong {
+  text-transform: uppercase;
+}
