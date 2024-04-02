@@ -19,16 +19,26 @@ export function Post() {
 
       <div className={style.content}>
         <p>Fala galeraa 👋 </p>
-        
-       <p> Acabei de subir mais um projeto no meu portfolio. É um
-        projeto que fiz sobre um feed de postagens de usuário... É somente o front
-        mas é um 🚀 </p>
-        
+
+        <p>
+          {" "}
+          Acabei de subir mais um projeto no meu portfolio. É um projeto que fiz
+          sobre um feed de postagens de usuário... É somente o front mas é um 🚀{" "}
+        </p>
+
         <p>
           <a href="#">#novoprojeto </a>
           <a href="#">#FeedComReact </a>
         </p>
       </div>
+
+      <form className={style.commentForm}>
+        <strong> Deixe seu feedback</strong>
+        <textarea placeholder="Deixe um comentário" />
+        <footer>
+        <button type="submit">Comentar</button>
+        </footer>
+      </form>
     </article>
   );
 }
