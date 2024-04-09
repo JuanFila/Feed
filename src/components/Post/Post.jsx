@@ -1,9 +1,30 @@
+import { useState } from "react";
 import { Avatar } from "../Avatar/avatar";
 import { Comment } from "../Comment/Comment";
 import style from "./Post.module.css";
 
-export function Post(props) {
-  console.log(props)
+
+export function Post({author, publishedAt, content}) {
+
+  const [comments, setComments] = useState(
+    ['Post muito bacana, hein!']
+  );
+
+  const [newCommentText, setNewCommentText] = useState('');
+
+
+  function handleCreateNewComment() {
+    event.preventDefault()
+
+    setComments([...comments, newCommentText]);
+    setNewCommentText('')
+    console.log(comments)
+  }
+
+  function handleNewCommentChange() {
+    setNewCommentText(event.target.value)
+  }
+
   return (
     <article className={style.post}>
       <header>
@@ -21,31 +42,36 @@ export function Post(props) {
       </header>
 
       <div className={style.content}>
-        <p>Fala galeraa 👋 </p>
-
-        <p>
-          {" "}
-          Acabei de subir mais um projeto no meu portfolio. É um projeto que fiz
-          sobre um feed de postagens de usuário... É somente o front mas é um 🚀{" "}
-        </p>
-
-        <p>
-          <a href="#">#novoprojeto </a>
-          <a href="#">#FeedComReact </a>
-        </p>
+        {
+          content.map(line  => {
+            if(line.type === 'paragraph'){
+              return <p key={line.content}>{line.content}</p>;
+            }else if (line.type === 'link') {
+              return <p key={line.content}><a href="#">{line.content}</a></p>
+            }
+          })
+        }
       </div>
 
-      <form className={style.commentForm}>
+      <form onSubmit={handleCreateNewComment} className={style.commentForm}>
         <strong> Deixe seu feedback</strong>
-        <textarea placeholder="Deixe um comentário" />
+        
+        <textarea 
+          name="comment" 
+          placeholder="Deixe um comentário"
+          value={newCommentText}
+          onChange={handleNewCommentChange}
+        />
+        
         <footer>
         <button type="submit">Comentar</button>
         </footer>
       </form>
       <div className={style.commentList}>
-      <Comment/>
-      <Comment/>
-      <Comment/>
+      {
+        comments.map(comment => {
+          return <Comment content={comment} key={comment}/>
+      })}
       </div>
     </article>
   );

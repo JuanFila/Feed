@@ -2,11 +2,11 @@ import { Header } from './components/Header/Header';
 
 import styles from './App.module.css'
 import './styles/global.css';
-import { SideBar } from './components/sidebar/SideBar';
 import { Post } from './components/Post/Post';
+import { SideBar } from './components/Sidebar/SideBar';
 
 // author {avatar_url: "", name: "",, role ""}
-// publisheAt: Date
+// publishedAt: Date
 // content: String
 
 const posts = [
@@ -33,7 +33,7 @@ const posts = [
     },
     content: [
       {type: 'paragraph', content: 'Fala galeraa 👋 '},
-      {type: 'paragraph', content:'Acabei de subir mais um projeto no meu portfolio. É um projeto que fiz sobre um feed de postagens de usuário... É somente o front mas é um 🚀'},
+      {type: 'paragraph', content: 'Teste'},
       {type: 'link', content: 'novoprojeto'},       
     ],
     publishedAt: new Date('2024-05-03') 
@@ -50,10 +50,10 @@ export default function App() {
          {posts.map(post=> {
            return (
            <Post
-           key={post.id}
-           author={post.author}
-           content={post.content}
-           publishedAt={post.publishedAt}
+              key={post.id}
+              author={post.author}
+              content={post.content}
+              publishedAt={post.publishedAt}
            />
           )
          })}
