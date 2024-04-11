@@ -32,9 +32,9 @@ const posts = [
       role: 'CEO'
     },
     content: [
-      {type: 'paragraph', content: 'Fala galeraa 👋 '},
+      {type: 'paragraph', content: 'Fala  👋 '},
       {type: 'paragraph', content: 'Teste'},
-      {type: 'link', content: 'novoprojeto'},       
+      {type: 'link', content: 'teste'},       
     ],
     publishedAt: new Date('2024-05-03') 
   },
